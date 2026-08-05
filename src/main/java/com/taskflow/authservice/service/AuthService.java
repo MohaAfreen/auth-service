@@ -4,6 +4,8 @@ import com.taskflow.authservice.dto.LoginRequest;
 import com.taskflow.authservice.dto.RegisterRequest;
 import com.taskflow.authservice.kafka.KafkaProducerService;
 import com.taskflow.authservice.repository.UserRepository;
+import com.taskflow.authservice.security.JwtUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +19,8 @@ public class AuthService {
     private KafkaProducerService producerService;
     private UserRepository userRepository;
 
+    @Autowired
+    private JwtUtil jwtUtil;
     public AuthService(BCryptPasswordEncoder passwordEncoder, KafkaProducerService producerService, UserRepository userRepository) {
         this.passwordEncoder = passwordEncoder;
         this.producerService = producerService;
@@ -36,13 +40,12 @@ public class AuthService {
     }
 
     public String validateUser(LoginRequest request){
-        Optional<User> user=userRepository.findUserByUsername(request.getUsername());
-        if(user.isEmpty())
-            return "Username is invalid";
-        else if(!passwordEncoder.matches(request.getPassword(),user.get().getPassword())){
+        User user=userRepository.findUserByUsername(request.getUsername())
+                .orElseThrow(()->  new RuntimeException("Username is invalid"));
+        if(!passwordEncoder.matches(request.getPassword(),user.getPassword())){
             return "Username or password is invalid";
         }else{
-            return "Logged in successfully";
+            return jwtUtil.generateToken(user.getUsername());
         }
     }
 
