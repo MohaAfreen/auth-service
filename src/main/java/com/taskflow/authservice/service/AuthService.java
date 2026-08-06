@@ -21,6 +21,9 @@ public class AuthService {
 
     @Autowired
     private JwtUtil jwtUtil;
+
+    @Autowired
+    private UserDetailsService userDetailsService;
     public AuthService(BCryptPasswordEncoder passwordEncoder, KafkaProducerService producerService, UserRepository userRepository) {
         this.passwordEncoder = passwordEncoder;
         this.producerService = producerService;
@@ -40,14 +43,15 @@ public class AuthService {
     }
 
     public String validateUser(LoginRequest request){
-        User user=userRepository.findUserByUsername(request.getUsername())
-                .orElseThrow(()->  new RuntimeException("Username is invalid"));
+        User user=userDetailsService.loadUserByUsername(request.getUsername());
         if(!passwordEncoder.matches(request.getPassword(),user.getPassword())){
             return "Username or password is invalid";
         }else{
             return jwtUtil.generateToken(user.getUsername());
         }
     }
+
+
 
 
 }
