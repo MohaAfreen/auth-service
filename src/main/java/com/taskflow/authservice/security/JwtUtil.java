@@ -1,8 +1,6 @@
 package com.taskflow.authservice.security;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -19,13 +17,4 @@ public class JwtUtil {
                 .signWith(SignatureAlgorithm.HS256,SECRET)
                 .compact();
     }
-
-    public Claims extractClaims(String token){
-        return Jwts.parser()
-                .setSigningKey(SECRET)
-                .parseClaimsJws(token)
-                .getBody();
-    }
-
-
 }

@@ -32,35 +32,6 @@ public class JwtFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         // 1. Get header
-        final String authHeader = request.getHeader("Authorization");
-
-        String token = null;
-        String username = null;
-
-        // 2. Check Bearer token
-        if (authHeader != null && authHeader.startsWith("Bearer ")) {
-            token = authHeader.substring(7);
-
-            try {
-                Claims claims = jwtUtil.extractClaims(token);
-                username= claims.getSubject();
-                String role = claims.get("role", String.class);
-                if(username!=null && SecurityContextHolder.getContext().getAuthentication()==null){
-                    User user= userDetailsService.loadUserByUsername(username);
-                    List<GrantedAuthority> authorities =
-                            List.of(new SimpleGrantedAuthority(role));
-                    UsernamePasswordAuthenticationToken upat= new UsernamePasswordAuthenticationToken(user,null,authorities);
-                    upat.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                    SecurityContextHolder.getContext().setAuthentication(upat);
-                }
-            } catch (Exception e) {
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.setContentType("application/json");
-                response.getWriter().write("{\"error\":\"Invalid or expired JWT\"}");
-                return; // Important: stop filter chain here
-            }
-        }
-
         filterChain.doFilter(request,response);
     }
 }
