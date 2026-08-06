@@ -47,7 +47,7 @@ public class AuthService {
         if(!passwordEncoder.matches(request.getPassword(),user.getPassword())){
             return "Username or password is invalid";
         }else{
-            return jwtUtil.generateToken(user.getUsername());
+            return jwtUtil.generateToken(user.getUsername(),user.getRole());
         }
     }
 
