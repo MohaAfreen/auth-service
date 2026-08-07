@@ -38,7 +38,7 @@ public class AuthService {
                 .role("USER")
                 .build();
         userRepository.save(user);
-        //producerService.sendUserCreatedEvent("User Registered"+ user.getEmail());
+        producerService.sendUserRegisteredEvent(user);
         return "User registered successfully";
     }
 
