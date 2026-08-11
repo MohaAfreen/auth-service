@@ -8,10 +8,11 @@ import java.util.Date;
 @Component
 public class JwtUtil {
     private final String SECRET="UniversalFavoriteAndSuperHandsomeSongjoongkiSecretKey12345";
-    public String generateToken(String username, String role){
+    public String generateToken(String username, String role, Long userId){
         return Jwts.builder()
                 .setSubject(username)
                 .claim("role",role)
+                .claim("userId",userId)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis()+1000*60*60))
                 .signWith(SignatureAlgorithm.HS256,SECRET)
