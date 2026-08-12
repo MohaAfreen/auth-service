@@ -1,0 +1,16 @@
+com\taskflow\authservice\config\SecurityConfig.class
+com\taskflow\authservice\security\JwtUtil.class
+com\taskflow\authservice\service\UserDetailsService.class
+com\taskflow\authservice\dto\LoginRequest.class
+com\taskflow\authservice\kafka\KafkaProducerService.class
+com\taskflow\authservice\AuthServiceApplication.class
+com\taskflow\authservice\security\JwtFilter.class
+com\taskflow\authservice\kafka\UserRegisteredEvent$UserRegisteredEventBuilder.class
+com\taskflow\authservice\repository\UserRepository.class
+com\taskflow\authservice\entity\User.class
+com\taskflow\authservice\entity\User$UserBuilder.class
+com\taskflow\authservice\controller\LoginController.class
+com\taskflow\authservice\kafka\UserRegisteredEvent.class
+com\taskflow\authservice\controller\AuthController.class
+com\taskflow\authservice\dto\RegisterRequest.class
+com\taskflow\authservice\service\AuthService.class

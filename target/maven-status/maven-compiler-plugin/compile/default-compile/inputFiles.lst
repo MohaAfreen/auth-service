@@ -1,0 +1,14 @@
+C:\Users\Public\afreen\IdeaProjects\taskflow\auth-service\src\main\java\com\taskflow\authservice\AuthServiceApplication.java
+C:\Users\Public\afreen\IdeaProjects\taskflow\auth-service\src\main\java\com\taskflow\authservice\config\SecurityConfig.java
+C:\Users\Public\afreen\IdeaProjects\taskflow\auth-service\src\main\java\com\taskflow\authservice\controller\AuthController.java
+C:\Users\Public\afreen\IdeaProjects\taskflow\auth-service\src\main\java\com\taskflow\authservice\controller\LoginController.java
+C:\Users\Public\afreen\IdeaProjects\taskflow\auth-service\src\main\java\com\taskflow\authservice\dto\LoginRequest.java
+C:\Users\Public\afreen\IdeaProjects\taskflow\auth-service\src\main\java\com\taskflow\authservice\dto\RegisterRequest.java
+C:\Users\Public\afreen\IdeaProjects\taskflow\auth-service\src\main\java\com\taskflow\authservice\entity\User.java
+C:\Users\Public\afreen\IdeaProjects\taskflow\auth-service\src\main\java\com\taskflow\authservice\kafka\KafkaProducerService.java
+C:\Users\Public\afreen\IdeaProjects\taskflow\auth-service\src\main\java\com\taskflow\authservice\kafka\UserRegisteredEvent.java
+C:\Users\Public\afreen\IdeaProjects\taskflow\auth-service\src\main\java\com\taskflow\authservice\repository\UserRepository.java
+C:\Users\Public\afreen\IdeaProjects\taskflow\auth-service\src\main\java\com\taskflow\authservice\security\JwtFilter.java
+C:\Users\Public\afreen\IdeaProjects\taskflow\auth-service\src\main\java\com\taskflow\authservice\security\JwtUtil.java
+C:\Users\Public\afreen\IdeaProjects\taskflow\auth-service\src\main\java\com\taskflow\authservice\service\AuthService.java
+C:\Users\Public\afreen\IdeaProjects\taskflow\auth-service\src\main\java\com\taskflow\authservice\service\UserDetailsService.java
