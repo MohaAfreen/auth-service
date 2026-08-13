@@ -19,6 +19,7 @@ public class KafkaProducerService {
     public void sendUserRegisteredEvent(User user){
         UserRegisteredEvent eventObj= UserRegisteredEvent
                 .builder()
+                .userId(user.getId())
                 .username(user.getUsername())
                 .email(user.getEmail())
                         .build();
